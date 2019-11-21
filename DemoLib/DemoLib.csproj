@@ -48,6 +48,11 @@
     <Compile Include="IData.cs" />
     <Compile Include="IOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Resource.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resource.resx</DependentUpon>
+    </Compile>
     <Compile Include="SimpleDoubleCalculator\BaseOperation.cs" />
     <Compile Include="IDataConverter.cs" />
     <Compile Include="SimpleDoubleCalculator\Remain.cs" />
@@ -63,7 +68,13 @@
     <Compile Include="Converters\CmdData.cs" />
     <Compile Include="UI\UserInterface.cs" />
     <Compile Include="DataModel\Data.cs" />
+    <Compile Include="Verification\Revise.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="Resource.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resource.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

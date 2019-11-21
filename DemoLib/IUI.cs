@@ -6,10 +6,19 @@ using System.Threading.Tasks;
 
 namespace DemoLib
 {
+    /// <summary>
+    /// Interface UI for the calculator
+    /// </summary>
     public interface IUI
     {
-        //T GetData(string inputData);
+        /// <summary>
+        /// Output Message for the calculator
+        /// </summary>
         Action<string, bool> Output { get; }
+
+        /// <summary>
+        /// Input string for the calculator
+        /// </summary>
         Func<string> Input { get; }
     }
 }

@@ -1,23 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using DemoLib;
+using DemoLib.Converters;
 using DemoLib.SimpleDoubleCalculator;
 using DemoLib.UI;
-using DemoLib.Converters;
+using System;
 
-namespace DemoLib
+namespace Calculator
 {
     class Program
     {
-        static void Main(/*string[] args*/)
+        static void Main()
         {
             UserInterface ui = new UserInterface();
             var dataConverter = new CmdData();
+
             ICalculator<double> calculator = new DoubleCalculator(ui, dataConverter);
 
-            ui.Output(BeginMessage(), true);
+            ui.Output(ResourceCalculator.InitialMessage, true);
 
             while (true)
             {
@@ -27,29 +25,14 @@ namespace DemoLib
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine("Во время вычислений были ошибки:\r\n" + e.Message + "\r\nЗавершить работу калькулятора? (Y - да)");
+                    Console.WriteLine(string.Format("{0}\r\n{1}\r\n{2}", ResourceCalculator.ErrorsCalculations, e.Message, ResourceCalculator.ShutDownCalculator));
+
                     if (Console.ReadLine().ToLowerInvariant() == "y")
                     {
-                        throw;
+                        throw;                        
                     }
                 }
             }
-        }
-        static string BeginMessage()
-        {
-            return @"Допустимые операции:
-+ сложение. Например: 2 + 8.
-- вычитание. Например: 45 - 6.
-/ деление. Например: 12 / 4.
-% остаток от деления. Например: 9 % 3.
-* умножение. Например:  8,2 * 2.
-^ степень числа;. Например 2 ^ 9.
-sqrt корень квадратный. Например: sqrt 16.
-log10 логарифм с основанием 10. Например: log10 1000.
-
-Цифры и операции должны быть разделены пробелами.
-Команда для закрытия калькулятора: exit
-";
         }
     }
 }
