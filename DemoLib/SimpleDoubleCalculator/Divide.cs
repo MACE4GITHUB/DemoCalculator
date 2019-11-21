@@ -26,7 +26,7 @@ namespace DemoLib.SimpleDoubleCalculator
         public double Operate()
         {
             if (Y == 0)
-                Revise.ArgumentException(Resource.DivideByZero, nameof(Y));           
+                Revise.DivideByZeroException(Resource.DivideByZero);           
 
             return X / Y;
         }
